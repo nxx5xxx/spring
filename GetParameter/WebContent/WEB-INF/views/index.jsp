@@ -36,5 +36,7 @@
 	<a href="test10?num1=100&num2=200&nums=300&nums=400">test10 - required false</a>
 	<hr>
 	<a href="test11?num1=100&num2=200&nums=300&nums=400">test11 - defaultValue</a>
+	<hr>
+	<a href="test12?aa=aaa&bb=bbb">test12 - request forwardtest</a>
 </body>
 </html>

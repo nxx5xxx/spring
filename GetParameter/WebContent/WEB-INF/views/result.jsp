@@ -9,5 +9,8 @@
 <body>
 	<h2>여기는 result.jsp입니다</h2>
 	<a href="index">메인으로</a>
+	<hr>
+	${aa }<br>
+	${bb }
 </body>
 </html>

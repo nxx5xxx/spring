@@ -33,7 +33,8 @@ public class HomeController {
 	
 	
 	  @RequestMapping(value="index", method=RequestMethod.GET) 
-	  public String home(HttpServletRequest request) { String home = request.getContextPath();
+	  public String home(HttpServletRequest request) { 
+		  String home = request.getContextPath();
 	  return home; }
 	 
 }

@@ -1,11 +1,18 @@
 package kr.co.tjoeun.controller;
 
+import java.io.IOException;
+
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.context.request.WebRequest;
 
@@ -170,6 +177,16 @@ public class TestController {
 		System.out.println("합계 : "+sum);
 
 		return "result";
+	}
+	
+	@RequestMapping(value="/test12", method= {RequestMethod.GET,RequestMethod.POST})
+	public void test12(HttpServletRequest request,HttpServletResponse response) throws ServletException, IOException {
+		String aa = request.getParameter("aa");
+		String bb = request.getParameter("bb");
+		request.setAttribute("aa", aa);
+		request.setAttribute("bb", bb);
+		RequestDispatcher view = request.getRequestDispatcher("/WEB-INF/views/result.jsp");
+		view.forward(request, response);
 	}
 	
 }
