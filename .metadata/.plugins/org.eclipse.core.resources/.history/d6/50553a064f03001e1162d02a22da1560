@@ -1,0 +1,8 @@
+URL
+	사용자가 서버에 접속해서 서비스를 받기 위해
+	입력하는 주소
+	
+	형식]
+	protocol://domainaddress.portnumber/경로1/경로2/경로3/.....
+		ㄴ 프로토콜 : server와 client 사이의 통신을 위한 규약(약속)
+		domain address(도메인주소)

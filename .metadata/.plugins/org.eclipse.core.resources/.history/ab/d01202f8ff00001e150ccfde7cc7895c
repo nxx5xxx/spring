@@ -1,0 +1,55 @@
+package kr.co.tjoeun.controller;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+
+@WebServlet("*.mvc") //URL맵핑 - *.mvc는 .mvc가 들어가는 모든것
+public class HomeController extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	public HomeController() {
+        super();
+
+    }
+
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		System.out.println("HomeController");
+		
+		//요청한 주소 url가져오기
+		String uri = request.getRequestURI();
+		
+		//view 로 사용하는 jsp
+		String viewName = null;
+		
+		
+		//contains 포함하다
+		if(uri.contains("main.mvc")) {
+			System.out.println("main 요청");
+			viewName = "main.jsp";
+		}else if(uri.contains("test1.mvc")) {
+			System.out.println("test1 요청");
+			viewName = "test1.jsp";
+		}else if(uri.contains("test2.mvc")) {
+			System.out.println("test2요청");
+			viewName = "test2.jsp";
+		}
+		
+		System.out.println(uri);
+		
+		RequestDispatcher view  = request.getRequestDispatcher(viewName);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// TODO Auto-generated method stub
+		doGet(request, response);
+	}
+
+}

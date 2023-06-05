@@ -1,0 +1,9 @@
+
+자바 클래스에서 설정하기
+
+web.xml : AbstractAnnotationConfigDispatcherServletinitializer를 상속하거나 (추상클래스)
+		WebApplicationInitializer 인터페이스를 구현함
+		
+root-context.xml : 상속이 없음
+
+servlet-context.xml : WebMvcConfigure 인터페이스를 구현함

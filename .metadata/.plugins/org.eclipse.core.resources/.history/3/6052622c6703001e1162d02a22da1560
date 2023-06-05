@@ -1,0 +1,4 @@
+parameter 추출하기
+
+HttpServletRequest 사용
+- Spring MVC는 필요한 객체나 data

@@ -1,0 +1,5 @@
+package kr.co.tjoeun.controller;
+
+public class HomeController {
+
+}

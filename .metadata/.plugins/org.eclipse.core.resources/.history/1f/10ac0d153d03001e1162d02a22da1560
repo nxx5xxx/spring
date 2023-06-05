@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/mvc"
+				 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+				 xmlns:beans="http://www.springframework.org/schema/beans"
+				 xmlns:context="http://www.springframework.org/schema/context"
+				 xsi:schemaLocation="http://www.springframework.org/schema/mvc
+				 					 http://www.springframework.org/schema/mvc/spring-mvc.xsd
+				 					 http://www.springframework.org/schema/beans
+				 					 http://www.springframework.org/schema/beans/spring-beans.xsd
+				 					 http://www.springframework.org/schema/context
+				 					 http://www.springframework.org/schema/context/spring-context.xsd">
+							
+		<!-- 
+			scan 한 package 내부의 class 중에서
+			Controller라는 annotation 이 지정된 class 들을
+			Controller로 loading 함 
+		-->
+		<annotation-driven/>
+		
+		
+		<!--scan할 bean 들이 모여있는 package를 지정하기 -->
+   		 <context:component-scan base-package="kr.co.tjoeun.controller"/>
+   		 
+   		 <!-- Controller 의 메소드에서 반환하는 문자열의 prefix와 suffix 경로 정보 설정하기 -->
+   		 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+   		 	<beans:property name="prefix" value="/WEB-INF/views/"/>
+   		 	<beans:property name="suffix" value=".jsp"/>
+   		 </beans:bean>
+   		 
+   		 <!-- 정적파일(jsp,사운드,이미지,js등등)경로지정 -->
+   		 <resources mapping="/**" location="/resources/"/>
+   		 
+</beans:beans>

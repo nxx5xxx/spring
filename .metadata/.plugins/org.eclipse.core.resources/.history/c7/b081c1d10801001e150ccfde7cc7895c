@@ -1,0 +1,13 @@
+package kr.co.tjoeun.model;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class Test2Service {
+
+		public int minus(HttpServletRequest request) {
+			String strNumber3 = request.getParameter("number3"); //문자열로 넘어오기때문에 ""를써서 받는것 즉 문자열이라는것임이것도
+			
+			int result = num1 - num2;
+			return result;
+		}
+}

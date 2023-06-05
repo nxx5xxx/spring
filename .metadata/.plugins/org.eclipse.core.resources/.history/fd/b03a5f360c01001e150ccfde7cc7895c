@@ -1,0 +1,24 @@
+2023/06/02
+
+MVC : Model - View - Controller
+
+Model : application business layer 
+application business-주로 DB관련 작업을 의미 : 프로그래밍요소
+
+Controlloer : application의 흐름을 관리하는 layer
+페이지이동 등을 구현하는것 
+
+View : application presentation layer
+화면
+
+서버에 게스트가 요청(리퀘스트) 하면 >컨트롤러에서 받고 뷰로 > 리스폰스
+
+리퀘스트 : url 주소창에 입력하는 것을 리퀘스트라 한다
+서블릿 : 리퀘스트를 받아서 컨트롤러에서 그에 해당하는 파일을 찾아서 끌어다 (jsp) 보내주는것 
+
+url에 ? 과 변수를 할당해서 보내는것
+ex) Get.do?id=1234&pw=1324
+
+
+
+Controller : View와 Model 간의 inte

@@ -1,0 +1,6 @@
+package kr.co.tjoeun.controller;
+
+@Controller
+public class Sub1Controller {
+
+}

@@ -1,0 +1,7 @@
+package kr.co.tjoeun.config;
+
+//상속이 없음 : 프로젝트 작업시 사용할 bean을 정의하는 클래스
+@Config
+public class RootAppContext {
+
+}

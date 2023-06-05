@@ -1,0 +1,5 @@
+package kr.co.tjoeun.config;
+
+public class SpringConfigClass {
+
+}

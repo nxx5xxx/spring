@@ -1,0 +1,26 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>여기는 index.jsp 입니다</h1>
+	<img src="image/spring_logo.jpg"><br>
+	<a href="test1?number1=100&number2=200&numbers=300&numbers=400">test1 get</a><br>
+	<hr>
+	<form action="test2" method="post">
+	<label for="number1">number1 : </label><input type="text" name="number1" id="number1"><br><br>
+	<label for="number2">number2 : </label><input type="text" name="number2" id="number2"><br><br>
+	numbers : <input type="checkbox" name="numbers" value="100"> 100
+	<input type="checkbox" name="numbers" value="200"> 200<br><br>
+	<input type="submit" value="전송">
+	</form>
+	<hr>
+	<a href="test3?number1=100&number2=200&numbers=300&numbers=400">test3 get</a><br>
+	<hr>
+		<a href="test1?number1=100&number2=200&numbers=300&numbers=400">test1 get</a><br>
+</body>
+</html>

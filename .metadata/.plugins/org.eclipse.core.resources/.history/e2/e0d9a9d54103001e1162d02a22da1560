@@ -1,0 +1,8 @@
+package kr.co.tjoeun.config;
+
+import org.springframework.web.WebApplicationInitializer;
+
+public class SpringConfigClass implements WebApplicationInitializer {
+
+	
+}

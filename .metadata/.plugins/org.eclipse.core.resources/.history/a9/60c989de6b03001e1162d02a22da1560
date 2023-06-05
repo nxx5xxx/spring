@@ -1,0 +1,20 @@
+parameter 추출하기
+
+HttpServletRequest 사용
+- Spring MVC는 필요한 객체나 data를 주입 받아서 사용함
+- 객체를 주입(injection) 받는다는 의미 :
+	ㄴ 필요한 클래스의 객체를 Spring Framework가 자동으로 생성해서
+		필요한 곳에 할당까지 자동으로 해 줌
+		
+WebRequest 사용
+
+
+@PathVariable
+	data가 요청 주소에 있는 경우, 값을 주입 받을 수 있는 Annotation
+	
+	Restful API 서버 프로그래밍에서 주로 사용함
+	
+	요청주소(URL)/값1/값2/값3...
+	
+	ex)	"test3?number1=100&number2=200&numbers=300&numbers=400"
+	

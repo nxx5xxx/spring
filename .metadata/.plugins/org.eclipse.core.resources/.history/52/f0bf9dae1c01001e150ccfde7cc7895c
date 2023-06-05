@@ -1,0 +1,15 @@
+package kr.co.tjoeun.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+
+@Controller //이 어노테이션을 보고 컨트롤러라고 인식 
+public class HomeController {
+	
+	//리퀘스트는 주소표시줄에 들어간 url을 얘기함
+	@RequestMapping(value="/", method="")
+	public String home() {
+		return "";
+	}
+}
