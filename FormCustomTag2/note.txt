@@ -1,0 +1,56 @@
+Spring-form jsp tag library
+
+https://docs.spring.io/spring-framework/docs/4.2.x/spring-framework-reference/html/spring-form-tld.html
+
+
+
+<form:form> 태그
+	ㄴ <form>태그를 생성
+	
+	form custom tag의 속성들
+		modelAttribute : 넘어온데이터를 받는부분
+			ㄴ form 태그 내의 입력 요소들에 적용된 value 값을 가진 객체이름을 받는 속성
+			modelAttribute 속성에 할당된 값 (객체이름)이 input 태그의 id 속성 값으로 된다
+			이를 생략하면 command 라는 문자열이 input 태그의 id 속성값으로 설정됨
+			
+			
+		action
+			ㄴ 요청할 주소를 할당받는 속성
+			    생략할시 현재 페이지(자기자신 페이지)로 자동으로 설정된다
+			    
+		method
+			ㄴ 요청방식을 할당받는 속성
+			    생략하면 post로 설정된다
+			    
+	다 생략시 이렇게 된다는 뜻임
+	<form id="command" action="/FormCustomTag2/test1" method="post">
+	
+	
+<form:button> 태그 
+	ㄴ submit버튼을 생성한다
+	
+		disabled 속성을 true로 설정할시 버튼이 비활성화 되어 누를수가 없는상태가 된다
+			ㄴ form태그에서 disabled="disabled" 와 같은것
+
+<form:hidden> 태그
+	ㄴ input태그의 type="hidden"과 같은태그
+	ㄴ화면에는 보이지않지만 값을 처리할 때 쓰는태그
+		path속성 : id속성과 name속성의 역할을 함 - modelAttribute에 할당된 값까지 value에 받아옴(주입함)
+			ㄴpath 속성에 할당된 값은 일반 input 태그의 id속성과 name 속성의 역할을 함
+			
+<form:input> 태그
+	ㄴ type 이 text인 input 태그를 생성한다
+		path속성 : id속성과 name속성의 역할을 함 - modelAttribute에 할당된 값까지 value에 받아옴(주입함)
+			ㄴpath 속성에 할당된 값은 일반 input 태그의 id속성과 name 속성의 역할을 함	
+			=form:form태그의 modelAttribute 속성에 의해 추출된
+			 model의 (HttpServletRequest 객체에 저장된 객체)
+			  멤버 변수를 추출해서 (input 태그로 변환된) value 속성에 주입(할당) 한다
+			  
+<form:password> 태그
+	ㄴ type 이 password인 input 태그를 생성함
+		path속성은 input과 특징이 같다
+	ㄴ showPassword속성
+		ㄴ 이 속성을 true로 해야 password가 보인다(불릿으로) - showPassword를 안걸면 value가 넘어오질 않는다
+		
+<form:textarea> 태그
+	ㄴ type이 textarea인 input 태그를 생성함

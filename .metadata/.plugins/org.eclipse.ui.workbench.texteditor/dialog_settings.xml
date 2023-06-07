@@ -15,10 +15,14 @@
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="    &lt;context:component-scan base-package=&quot;kr.co.tjoeun.controller&quot;/&gt;"/>
+			<item value="modelAnd"/>
+			<item value="modeland"/>
+			<item value="number3"/>
 			<item value="SpringMVCXml"/>
+			<item value="    &lt;context:component-scan base-package=&quot;kr.co.tjoeun.controller&quot;/&gt;"/>
 		</list>
 		<list key="replacehistory">
+			<item value="number5"/>
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">

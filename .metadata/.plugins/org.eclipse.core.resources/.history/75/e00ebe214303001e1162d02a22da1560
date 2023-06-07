@@ -1,7 +1,0 @@
-package kr.co.tjoeun.config;
-
-// Spring MVC project 에 관련된 설정을 하는 클래스
-//servlet_context.xml 에 관련설정임
-public class ServletAppContext implements {
-
-}

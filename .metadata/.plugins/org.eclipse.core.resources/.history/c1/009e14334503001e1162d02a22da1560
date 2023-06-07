@@ -1,6 +1,0 @@
-package kr.co.tjoeun.config;
-
-//상속이 없음 : 프로젝트 작업시 사용할 bean을 저
-public class RootAppContext {
-
-}

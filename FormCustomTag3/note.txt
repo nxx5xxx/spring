@@ -1,0 +1,13 @@
+
+form custom tag의
+select, checkbox, radio 태그
+
+<form:select> 태그
+	ㄴ select 태그를 생성함
+		path속성은 input폼태그의 설명과 같음
+		단, 받은 data값이 옵션의 기본 값으로 선택되어있음 (selected="selected" 되어잇단 말임)
+<form:option> 태그 <form:select> 태그의 하위태그
+
+<form:option> : select 태그의 option 태그 하나를 생성함
+<form:options> : select 태그의 option 태그 여러개를 생성함
+items:option <== 태그들을 생성할 때 필요한 data가 담긴 list나 배열

@@ -1,7 +1,0 @@
-package kr.co.tjoeun.controller;
-
-
-@Controller
-public class HomeController {
-
-}

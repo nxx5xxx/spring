@@ -1,0 +1,14 @@
+
+CommanObject : 커맨드 객체 - HttpServletRequest 객체에 자동으로 담긴다 (단 , 자동으로 저장되는 ㅇㅣ름은 클래스의 이름이며 첫글자는 소문자로 저장된다)
+	ㄴ Client 가 전달해 주는 parameter data를 주입받을 때 사용하는 객체
+	
+	
+	ex)
+	@PostMapping("/test1")
+	public String test1(@ModelAttribute BeanDate bean){
+		return "test1";
+	
+	}
+	
+	여기서 (@ModelAttribute BeanDate bean) 이것이 커맨드 객체이다
+	(DTO라고 볼 수 있음)

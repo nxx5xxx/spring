@@ -2,12 +2,32 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="FormCustomTag3"/>
+			<item value="FormCustomTag2"/>
+			<item value="FormCustomTag"/>
+			<item value="CommandObject"/>
+			<item value="ViewResolver"/>
+			<item value="getObjectParameter"/>
+			<item value="GetParameter"/>
+			<item value="RequestMethod"/>
+			<item value="URLMapping"/>
+			<item value="SpringMVCJava"/>
 			<item value="SpringMVCxml"/>
 			<item value="SpringMVC01"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="FormCustomTag3"/>
+			<item value="FormCustomTag2"/>
+			<item value="FormCustomTag"/>
+			<item value="CommandObject"/>
+			<item value="ViewResolver"/>
+			<item value="getObjectParameter"/>
+			<item value="GetParameter"/>
+			<item value="RequestMethod"/>
+			<item value="URLMapping"/>
+			<item value="SpringMVCJava"/>
 			<item value="SpringMVCxml"/>
 			<item value="SpringMVC01"/>
 		</list>
