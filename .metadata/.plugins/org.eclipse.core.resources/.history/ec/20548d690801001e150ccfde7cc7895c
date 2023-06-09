@@ -1,9 +1,0 @@
-package kr.co.tjoeun.model;
-
-public class Test2Service {
-
-		public int minus(int num1,int num2) {
-			int result = num1 - num2;
-			return result
-		}
-}

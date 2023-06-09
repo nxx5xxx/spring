@@ -10,4 +10,26 @@ select, checkbox, radio 태그
 
 <form:option> : select 태그의 option 태그 하나를 생성함
 <form:options> : select 태그의 option 태그 여러개를 생성함
+	ㄴ <form:options items="컨트롤러에서의 할당해준 배열명"> - 배열 외 어레이리스트도 ㄱㅏ능하다
+	
+		<form:options items="${requestScope.dataList2 }" itemLabel="key" itemValue="value" />
+		 <!-- itemLabel은 멤버필드에있는 변수명중 키로 잡을것을 넣어주면된다 -->
+		 <!-- itemValue는 멤버필드에있는 변수명중 값으로 잡을것을 넣어주면된다 -->
+		</form:select>
+		이런식으로 키값과 밸류값을 따로 지정해주는것도 가능(아마 해쉬맵으로 가능할것같음)
+	
 items:option <== 태그들을 생성할 때 필요한 data가 담긴 list나 배열
+--체크박스
+
+<form:checkbox>,<form:checkboxes>
+
+<form:checkbox> 체크박스 한개 생성
+<form:checkboxes> 체크박스 여러개 생성
+items : checkbox들을 생성하기 위해 필요한 정보가 저장된 list나 배열
+
+--라디오
+<form:radiobutton>, <form:radiobuttons>
+
+
+<form:radiobutton> : 라디오버튼 하나 생성
+<form:radiobuttons> 라디오버튼 여러개 생성

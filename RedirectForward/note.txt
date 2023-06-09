@@ -1,0 +1,35 @@
+Code의 흐름
+				↗request(요청)-->요청정보분석↓↓
+	Browser(Client)  				Server↓
+				↖response(응답) <--		응답결과생성
+					
+Spring Framework(MVC)
+	ㄴ 요청이 들어오면 요청주소(URl) 를 분석함
+	    이 URL과 mapping 된 메소드(Controller 내)를 호출함
+	    이 메소드가 반환하는 정보(return "jsp page(view이름)")를 기반으로
+	    응답결과는 생성해서(html(jsp) code) Client(Client 쪽의 Browser) 에게 보냄
+	    
+메소드(Controller 내의 메소드) 의 return
+	Controller를 통해 요청주소(URL)와 Mapping 되어 있는 메소드가 반환하는 값
+	
+	문자열(view 이름), Model, ModelAndView 객체 등을 반환 할 수 있음
+	 ㄴ Client쪽 Browser로 전달할 응답결과(response)를 
+	     생성하기 위해 JSP를 지정하는 부분
+	     
+	문자열(view 이름), Model, ModelAndView 객체 이외의
+	다른 정보들도 반활할 수 있음
+	     
+Redirect (Browser 를 거침 : Browser에서 Server에 요청(request) 을 다시 보냄)
+		:Client 에서 새로운 페이지 요청을 응답결과로 전달한다
+	ㄴ Client가 Server에게 요청한 것(request)에 대한 응답결과(response)를 전달하는 것
+										(Client 쪽의 Browser 로 전달)
+	Redirect는 새로운 요청(request)이 발생하는 것임
+		ㄴ HttpServletRequest 객체가 일단 소멸 된 후(메모리가 삭제) 새롭게 생성됨
+		HttpSession 객체는 소멸되지않고 그대로 유지가 됨
+-- return "redirect:/sub1"; 이런식으로 사용함		
+		
+Forward (Browser 를 거치지 않고 (code의 흐름이 ) Server 내부에서만 이동함)
+		:Server 상 에서만 code의 흐름이 이동된다
+	ㄴ즉, Browser는 다른 곳으로 흐름이 이동되었다는 것을 인식하지 못한다
+	 	ㄴ 주소창의 주소가 변경되지 않는다
+-- return "forward:/sub2"; 이런식으로 사용함	 	
