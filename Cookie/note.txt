@@ -1,0 +1,47 @@
+
+## Cookie
+	
+	(여기서 client는 크롬 등등 브라우저)
+	Client가 Server에 접속하면 Server에서 Client 쪽으로
+	응답정보를 보내는데 이 정보가 Client의 web browser에 의해 저장된다
+	response			ㄴ Client의 web browser에 저장됨
+		ㄴ HttpServletResponse(내장객체)가 cookie를 추가한다 
+									<--client 쪽 Browser에 저장된다
+						reponse.addCookie(Cookie객체)
+					
+		Cookie 객체 생성 - 생성자의 argument 로 이름(변수)과 값을 지정함
+		Cookie c1 = new Cookie("name","강아지")
+		c1.setMaxAge(60*60*24*365); 시간 정함
+		response.addCookie(c1); 쿠키추가
+		
+		*** 한글은 UTF-8 로 encoding 해줘야한다 ***				
+	
+	Client 의 Web browser에 Cookie가 저장된 이후에
+	Client 가 Server에 재접속하면
+	Client의 browser는 Server로 이 Cookie를 전달함
+	
+	Cookie는 Client의 browser에 저장되므로
+	browser가 Server로 Cookie를 전달할 때만
+	Server가 이 cookie 정보를 사용할 수 있음
+	
+	Server 측의 code로 Cookie에 data를 저장할 수는 없음
+	 ㄴ browser 에 보내는 응답 결과(response) 에 
+	 저장할 Cookie 정보를 담아 보내면
+	 Client의 browser 에 의해서 Cookie가 저장된다
+	 
+	Spring MVC에서의 Cookie 저장은
+	Servlet/JSP 에서 사용하는 방법으로 처리한다
+	
+		쿠키를 받으려면 배열로 받는다
+		Cookie[] 배열명 = request.getCookies();
+		인코딩했으니까 디코딩해줘야함
+		URLDecoder.decode(반복문명.getValue(),"UTF-8")
+		
+	(Server) 에서 Cookie 읽기
+	Cookie 정보는 client 의 browser 가 sever로 요청(request)을 보낼 때
+	요청 정보에 담아서 server 쪽으로 전달함
+	Servlet/JSP 에서는 Cookie 정보를 배열로 받아서 사용한다
+	Spring MVC 에서는 Cookie 정보를 주입 받아서 사용한다
+								ㄴ @CookieValue("전송했던쿠키이름") 라는 어노테이션을 사용
+	ex)	public String loadCookie2(@CookieValue("data1") String cookie1) {
+		
