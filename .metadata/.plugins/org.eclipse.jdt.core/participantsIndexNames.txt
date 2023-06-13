@@ -3,10 +3,10 @@ D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jsps
 \Cookie\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1373894340.index
 \SpringMVCJava\src
-D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3490615164.index
-\SessionScope\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1215401257.index
 \SessionScopeBean\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3490615164.index
+\SessionScope\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4127071075.index
 \CommandObject\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1044014957.index
@@ -21,8 +21,12 @@ D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jsps
 \RequestScopeBeanXml\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2313600910.index
 \SpringMVCxml\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\994173933.index
+\validate\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\852833596.index
 \GetParameter\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4037150536.index
+\messageXml\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4053847817.index
 \URLMapping\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3915134339.index
@@ -33,6 +37,10 @@ D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jsps
 \URLMapping\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3929127201.index
 \ApplicationScope\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4126983756.index
+\message\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\698875594.index
+\messageXml\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3838367504.index
 \URLMapping\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\4259283984.index
@@ -49,6 +57,8 @@ D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jsps
 \ApplicationScopeXml\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\578773681.index
 \RequestMethod\src
+D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3857395999.index
+\properties\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1672548651.index
 \GetParameter\src
 D:\woozookim\jangjava\springmvc\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2220141704.index

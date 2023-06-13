@@ -19,7 +19,8 @@
 		
 		
 		<!--scan할 bean 들이 모여있는 package를 지정하기 -->
-   		 <context:component-scan base-package="kr.co.tjoeun.controller"/>
+   		<context:component-scan base-package="kr.co.tjoeun.controller"/>
+   		<context:component-scan base-package="kr.co.tjoeun.beans"/>
    		 
    		 <!-- Controller 의 메소드에서 반환하는 문자열의 prefix와 suffix 경로 정보 설정하기 -->
    		 <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
