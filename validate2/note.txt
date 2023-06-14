@@ -1,0 +1,137 @@
+
+유효성 검사
+
+	Spring MVC 로 처리한다
+	Spring MVC 는 JSR-303 규격의 유효성 검사 library 를 사용한다
+	Bean 에 data가 입력될 때 어떤 검사를 할 것 인지
+	Annotation 으로 지정한다
+		ㄴ 이 Annotation의 조건에 맞지 않으면
+			개발자에서 입력값에 오류가 있다는 정보를 전달한다
+			
+		pom.xml에 dependency 추가하기
+		
+		maven repository 에서 Bean Validation API검색
+		(Bean Validation API » 2.0.1.Final)
+		<!-- https://mvnrepository.com/artifact/javax.validation/validation-api -->
+			<dependency>
+			    <groupId>javax.validation</groupId>
+			    <artifactId>validation-api</artifactId>
+			    <version>2.0.1.Final</version>
+			</dependency>
+		
+		maven repository 에서 hibernate validator 검색
+		(Hibernate Validator Engine » 6.1.2.Final)
+		<!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+		<dependency>
+		    <groupId>org.hibernate.validator</groupId>
+		    <artifactId>hibernate-validator</artifactId>
+		    <version>6.1.2.Final</version>
+		</dependency>
+		
+		
+		Bean에 Annotation 설정하기
+		
+		@Size(min=2,max=10)
+		private String str; (길이를 2~10글자로 하라는의미)
+		
+		@Max(100)
+		private int data2; 
+		
+		@Valid
+		Controller의 메소드에서 주입받는 Bean에
+		@Valid 어노테이션을 설정하면 유효성 검사를 실행하게된다
+		
+		유효성 검사 결과를 사용하려면
+		BindingResult 객체를 주입받아야 한다
+			ㄴ 유효성 검사를 실행한 결과정보를 저장하고 있다
+			
+		위의 과정을 통해 Controller 에서 사용자가 입력한 값이 유효한지 파악한다
+		
+## ex)
+	@PostMapping("/input_procedure")
+	public String input_procedure(@Valid TestBean1 bean1, BindingResult result) {
+		//모델어트리뷰트로 지정해주지않으면 testBean1으로 EL태그로받아야함
+		System.out.println(bean1.getData1());
+		System.out.println(bean1.getData2());
+		
+		System.out.println("BindingResult : "+result);
+		
+		if(result.hasErrors()) {
+			//유효성 위반 결과 모두 가져오기
+			for(ObjectError error : result.getAllErrors()) {
+				System.out.println("에러메세지 : "+error.getDefaultMessage());
+				System.out.println("에러코드 : "+error.getCode());
+				System.out.println("object name : "+error.getObjectName());
+				System.out.println("------------------------");
+			}
+			
+		}
+		
+		return "input_procedure";
+	}
+		
+---
+	결과값 )
+		에러메세지 : 크기가 2에서 10 사이여야 합니다
+		에러코드 : Size
+		object name : testBean1
+		------------------------
+		에러메세지 : 100 이하여야 합니다
+		에러코드 : Max
+		object name : testBean1
+		------------------------
+
+## 더 자세히 알고싶으면
+
+for문 안에
+				String[] errorCodes = error.getCodes();
+				for(String code : errorCodes) {
+					System.out.println(code);
+				}
+를 추가하면
+		에러메세지 : 크기가 2에서 10 사이여야 합니다
+		에러코드 : Size
+		object name : testBean1
+		Size.testBean1.data1
+		Size.data1
+		Size.java.lang.String
+		Size
+		------------------------
+		에러메세지 : 100 이하여야 합니다
+		에러코드 : Max
+		object name : testBean1
+		Max.testBean1.data2
+		Max.data2
+		Max.int
+		Max
+		------------------------
+이런 결과가 나온다
+
+
+## Form에 입력한 data 가 유지되게 하기
+	
+	유효성 검사를 통과하지 못해 다시 입력화면으로 돌아온 경우
+	기존에 입력해 놧던 내용을 유지하기
+	 ㄴ 입력 화면에 전달된 Bean객체를 input 태그에 값으로 주입해 준다
+	  Spring MVC 의 Form Custom Tag를 사용한다
+	  이 경우 검증에 실패한 문자열을 비교적 쉽게 세팅할 수 있다	
+		
+### 예 :
+	
+변경 전
+	
+	@GetMapping("/input_data")
+	public String input_data() {
+		return "input_data";
+	}
+	
+	>>>>>
+
+변경 후
+	
+	@GetMapping("/input_data")
+	public String input_data(TestBean1 bean1) {
+		return "input_data";
+	}
+	
+	

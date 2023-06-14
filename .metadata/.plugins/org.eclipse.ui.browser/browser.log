@@ -81,3 +81,18 @@
 6월 12, 2023 09:53:01.74 NEW SESSION
 6월 12, 2023 09:53:01.74 [18800:11044:0612/095301.737:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
 6월 12, 2023 13:03:15.18 [18800:11044:0612/130315.187:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+6월 14, 2023 11:13:14.91 NEW SESSION
+6월 14, 2023 11:13:14.91 [19820:6604:0614/111314.892:ERROR:interface_endpoint_client.cc(697)] Message 1 rejected by interface blink.mojom.WidgetHost
+6월 14, 2023 14:06:06.11 [19820:6604:0614/140606.110:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint (unset) for first_image_paint 0.378 s
+6월 14, 2023 14:50:51.58 [19820:6604:0614/145051.580:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:51.67 [19820:6604:0614/145051.679:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:51.81 [19820:6604:0614/145051.814:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:51.92 [19820:6604:0614/145051.920:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:52.57 [19820:6604:0614/145052.575:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:52.72 [19820:6604:0614/145052.720:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:53.16 [19820:6604:0614/145053.169:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:53.28 [19820:6604:0614/145053.285:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:53.62 [19820:6604:0614/145053.626:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:50:53.74 [19820:6604:0614/145053.741:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+6월 14, 2023 14:58:48.89 [19820:6604:0614/145848.892:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s

@@ -1,0 +1,27 @@
+## Project Lombok » 1.18.24설치함
+	<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
+	<dependency>
+	    <groupId>org.projectlombok</groupId>
+	    <artifactId>lombok</artifactId>
+	    <version>1.18.24</version>
+	    <scope>provided</scope>
+	</dependency>
+
+
+#JSR_380
+	
+	@NotEmpty : 주입된 값의 길이가 0 이면 오류가 발생한다
+				공백도 문자로 인식함
+				
+	@NotBlank : 주입된 값의 공백을 제거한 길이가 0 이면 오류가 발생한다
+				(공백제외 길이 1이상 이라는 뜻)
+	
+	@Positive : 양수가 아니면 오류가 발생한다 (즉, 0 초과)
+	
+	@PositiveOrZero : 0또는 양수가 아니면 오류가 발생한다 (즉, 0 이상)
+	
+	@Negative  : 음수가 아니면 오류가 발생한다
+	
+	@NegativeOrZero : 0또는 음수가 아니면 오류
+	
+	@Email : 이메일 형식이 아니면 오류가 발생 - @포함여부라 완벽하지않음

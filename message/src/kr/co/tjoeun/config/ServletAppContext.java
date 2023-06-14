@@ -38,10 +38,10 @@ public class ServletAppContext implements WebMvcConfigurer {
 	@Bean
 	public ReloadableResourceBundleMessageSource messageSource() {
 		ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
-		res.setBasenames("/WEB-INF/properties/data1.properties",
-				"/WEB-INF/properties/data2.properties");
+		res.setBasenames("/WEB-INF/properties/data1",
+				"/WEB-INF/properties/data2");
 		//res.setBasename("messages");
-		res.setDefaultEncoding("UTF-8"); 
+		//res.setDefaultEncoding("UTF-8"); 
 		return res;
 	}
 	

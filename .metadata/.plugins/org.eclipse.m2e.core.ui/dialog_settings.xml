@@ -2,6 +2,12 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="Validator"/>
+			<item value="JSR_380"/>
+			<item value="JSR_303"/>
+			<item value="validate"/>
+			<item value="messageXml"/>
+			<item value="message"/>
 			<item value="properties"/>
 			<item value="Cookie"/>
 			<item value="ApplicationScopeXml"/>
@@ -11,16 +17,16 @@
 			<item value="SessionScopeBean"/>
 			<item value="SessionScope"/>
 			<item value="RequestScopeBeanXml"/>
-			<item value="RequestScopeBean"/>
-			<item value="RequestScope"/>
-			<item value="RedirectForward"/>
-			<item value="FormCustomTag3"/>
-			<item value="FormCustomTag2"/>
-			<item value="FormCustomTag"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="Validator"/>
+			<item value="JSR_380"/>
+			<item value="JSR_303"/>
+			<item value="validate"/>
+			<item value="messageXml"/>
+			<item value="message"/>
 			<item value="properties"/>
 			<item value="Cookie"/>
 			<item value="ApplicationScopeXml"/>
@@ -30,12 +36,6 @@
 			<item value="SessionScopeBean"/>
 			<item value="SessionScope"/>
 			<item value="RequestScopeBeanXml"/>
-			<item value="RequestScopeBean"/>
-			<item value="RequestScope"/>
-			<item value="RedirectForward"/>
-			<item value="FormCustomTag3"/>
-			<item value="FormCustomTag2"/>
-			<item value="FormCustomTag"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

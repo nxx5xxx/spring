@@ -15,8 +15,8 @@ public class TestController {
 	
 	@GetMapping("/test1")
 	public String test1() {
-		String name1 = res.getMessage("student1.name1", null,Locale.KOREA);
-		String name2 = res.getMessage("student2.name2", null,Locale.KOREA);
+		String name1 = res.getMessage("student1.name1", null,null);
+		String name2 = res.getMessage("student2.name2", null,null);
 		System.out.println(name1);
 		System.out.println(name2);
 		return "test1";

@@ -1,0 +1,94 @@
+
+# JSR-303
+	JSR-303 어노테이션은 Bean 객체에 주입되는 값에 대한
+	유효성 검사를 할 때 제공되는 어노테이션이다
+	
+## 어노테이션
+
+	@AssertTrue : true가 아닌 값이 들어오면 오류 발생
+	
+	@AssertFalse : false가 아닌 값이 들어오면 오류 발생
+	
+	@Max(값) : 지정한 값보다 큰 값이 들어오면 오류 발생
+	
+	@Min(값) : 지정한 값보다 작은 값이 들어오면 오류 발생
+	
+	@DecimalMax(value="값", inclusive=true 또는 false)
+		ㄴ value 에 지정한 값보다 작거나 같은 값이 들어와야 한다
+		  inclusive 가 false 이면 지정한 값은 포함하지 않은
+		  	ㄴ 이 경우에는 지정한 값보다 작은값이 와야한다 (기본값 : true)
+		  	
+	@DecimalMin(value="값", inclusive= true 또는 false
+		ㄴ value 에 지정한 값보다 크거나 같은 값이 들어와야 한다
+			ㄴ inclusive가 false 이면 지정한 값은 포함하지 않는다
+				ㄴ 이 경우에는 지정한 값보다 큰 값이 와야한다 (기본값 : true)
+	
+	@Null : 값이 들어오면 오류가 발생함
+	@NotNull : 값이 들어오지 않으면 오류가 발생함
+	
+	@Digits(integer=정수자릿수, fraction=실수자릿수)
+		ㄴ 지정된 자릿수의 숫자가 아닌 경우 오류가 발생한다
+		
+	@Size(min=글자수, max=글자수)
+		ㄴ 지정한 글자수 보다 짧거나 길면 오류가 발생된다
+		
+	@Pattern(regexp=정규식)
+		ㄴ 주어진 정규식에 어긋나면 오류가 발생한다
+	
+	
+## 사용 예
+### Bean 클래스에서
+	
+	@AssertTrue
+	private boolean data1;
+	
+	@Max(100) 최대값 100 (=100이하)
+	@Min(10)  최소값 10 (=10이상)
+	private int data3;
+	
+	@Max(100)
+	@Min(10)
+	private String data4;
+	
+	@DecimalMax(value="100", inclusive=false) 최대값 99 (100미만)
+	@DecimalMin(value="10", inclusive=false) 최솟값 10 (10 초과)
+	private int data5;
+	
+	이런식으로 작성
+	
+### TestController
+	
+	@GetMapping("/input_data")
+	public String input_data(TestBean1 bean1) {
+		
+		return "input_data";
+	}
+	
+	@PostMapping("/input_procedure")//@Valid는 validation을 받을것 그리고 그 뒤에 그 결과를 받을객체
+	public String input_procedure(@Valid TestBean1 bean1, BindingResult result) {
+		if(result.hasErrors()) {
+			
+			return "input_data";
+		}
+		return "input_success";
+	}
+	
+### 프로퍼티스
+	error_message.properties
+	
+	AssertTrue.testBean1.data1 = data1 은 true가 아닙니다
+	AssertFalse.testBean1.data2 = data2 는 false가 아닙니다
+	Max.testBean1.data3 = data3는 100을 초과하면 안 됩니다
+	Min.testBean1.data3 = data3는 10초과하는 값이여야 합니다
+	typeMismatch.testBean1.data3 = 정수를 입력해야 합니다
+	
+### 서블릿 앱 콘텍스트
+
+	@Bean
+	public ReloadableResourceBundleMessageSource messageSource() {
+		ReloadableResourceBundleMessageSource res = new ReloadableResourceBundleMessageSource();
+		res.setBasename("/WEB-INF/properties/error_message");
+		return res;
+	}
+	
+---
