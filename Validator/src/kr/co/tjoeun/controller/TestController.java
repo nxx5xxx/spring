@@ -34,7 +34,7 @@ public class TestController {
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){ //웹데이터 바인더에서 등록을하는것
 		TestBean1Validator validator1 = new TestBean1Validator();
-		binder.setValidator(validator1);
+		binder.addValidators(validator1);
 	}
 	
 }

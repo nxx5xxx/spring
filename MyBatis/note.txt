@@ -1,0 +1,72 @@
+
+Mapper 작성하기
+	
+	ㄴ Mapper는 Query 문을 작성하는 파일이다
+	
+	-- namespace는 Mapper를 구분해주는 식별자
+	-- test_db는 정해진게 아니다 내가 정할수 있다
+	<mapper namespace = "test_db">
+	-- 여기서 id는 참조변수이다 >내가 정할수 있다
+	-- parameterType은 클래스이다
+		<insert id="insert_data" parameterType="kr.co.tjoeun.beans.TestBean">
+	-- CDATA는 SQL문구내에 태그같은 구조가 있을시 태그구조로 인식하지않고 글자자체로 인식하게 해주는것 
+	-- #{}내에는 parameterType에 있는 멤버변수 이름
+		<![CDATA[
+			insert into springTest values(#{data1},#{data2},#{data3});
+		]]>
+		</insert>
+	
+	</mapper>
+	
+	
+servlet-context.xml 에서 MyBatis관련 설정하기
+
+	1) 	db.properties 파일에 작성한 Database 정보를 
+		XML 파일에서 사용 할 수 있도록 Bean을 정의한다 (스프링이 사용할수 있도록 자동으로 설정하라 는 의미)
+	org.springframework.beans.factory.config.PropertyPlaceholderConfigurer.class
+	
+	<beans:bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+		<beans:property name="location">
+			<beans:value>
+			/WEB-INF/properties/data.properties
+			</beans:value>
+		</beans:property>
+	</beans:bean>
+	
+	2) 	데이터 베이스 접속 정보를 관리하는 객체인
+		BasicDataSource 클래스를 Bean으로 정의한다
+		
+		data.properties 에 작성한 내용
+		db.classname = oracle.jdbc.OracleDriver
+		db.url = jdbc:oracle:thin:@localhost:1521:xe
+		db.username = jangjava1
+		db.password = 1234
+		
+		
+	<beans:bean id="basic_data_source" class="org.apache.commons.dbcp2.BasicDataSource" >
+		<beans:property name="driverClassName" value="${db.classname}" />
+		<beans:property name="url" value="${db.url}" />
+		<beans:property name="username" value="${db.username}" />
+		<beans:property name="password" value="${db.password}" />
+	</beans:bean>
+	
+	3) 	SqlSessionFactoryBean 클래스를 Bean으로 정의하기
+		ㄴ 데이터베이스 접속 정보와 mapper 파일을 관리하는 Bean
+		org.mybatis.spring.SqlSessionFactoryBean
+		--2)번에서 만든 id="basic_data_source" 를 갖고와 value에 적은것이다
+		
+	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" value="basic_data_source" />
+		<beans:property name="mapperLocations" value="/WEB-INF/mapper/*.xml" />
+	</beans:bean>
+	
+	4) SqlSessionTemplate 클래스를 Bean으로 정의(등록)하기
+		ㄴ 	Query 문을 전달하는 Bean 이며,
+			이 Bean을 주입받아 필요한 Query를 실행하게 된다
+		org.mybatis.spring.SqlSessionTemplate
+		--3)에서 만든 id="sqlSession" dmf ref에 넣은것	
+			
+	<beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate" >
+		<beans:constructor-arg index="0" ref="sqlSession" />
+	
+	</beans:bean> 
