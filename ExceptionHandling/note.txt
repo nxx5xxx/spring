@@ -1,0 +1,66 @@
+
+# 예외처리
+## ExceptionHandling
+	Web Application 에서 오류가 발생할 때
+	보여줄 jsp 를 별도로 만들어서 보여준다
+	
+##	예외처리 - 등록방법
+### @ExceptionHandler - 각 컨트롤러마다 부여해줘야함
+	Controller 에서 @ExceptionHandler 어노테이션을 사용하여
+	메소드를 정의하면 오류가 발생했을시 이 메소드가 자동으로 호출된다
+	
+### 등록예시
+	@Controller
+	public class TestController {
+
+	@GetMapping("/exception1")
+	public String exception1(Model model) {
+		int[] arr1 = {1,2,3,4,5};
+		System.out.printf("arr1[0] : %d\n",arr1[10]);
+		model.addAttribute("arr1_0",arr1[10]);
+		return "exception1";
+	}
+	//한개만 등록
+	@ExceptionHandler(ArrayIndexOutOfBoundsException.class)
+	public String arrayException() {
+		return "arrayException";
+	}	
+	
+	
+### Global Exception Handler - 여러개(모든오류)
+	@ExceptionHandler는 Controller 마다 만들어야한다
+	Controller 마다 바ㄹ생할 수 있는 예외들은	
+	@ExceptionHandler 로 한 번만 정의해서 사용하는것이 좋다
+	
+	Global Exception Handler 를 구현하면
+	Controller 에 정의한 Exception Handler 중
+	해당 오류에 대해 정의한것이 없는 경우
+	Global Exception Handler로 이동해서 예외처리를 하게 된다
+	
+	SevletContext에 해당 문구(@ControllerAdvice) 가 있는 패키지를 등록해줘야한다
+	
+	
+### 등록예시
+#### ServletContext.java
+
+	@ComponentScan("kr.co.tjoeun.exception")
+	public class ServletAppContext implements WebMvcConfigurer {
+
+#### kr.co.tjoeun.exception 패키지 내 클래스
+
+	package kr.co.tjoeun.exception;
+	
+	import org.springframework.web.bind.annotation.ControllerAdvice;
+	import org.springframework.web.bind.annotation.ExceptionHandler;
+		
+		@ControllerAdvice
+		public class GlobalExceptionHandler {
+	
+		@ExceptionHandler(NullPointerException.class)
+		public String nullPointerException() {
+			return "global_nullpointer_exception";
+		}
+	}
+
+	단, 각 클래스내에 먼저 @ExceptionHandler로 등록해놓은게 우선순위가 있고
+	존재하지 않을경우 ContollerAdvice에 있는것으로 로딩한다

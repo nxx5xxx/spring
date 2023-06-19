@@ -96,3 +96,7 @@
 6월 14, 2023 14:50:53.62 [19820:6604:0614/145053.626:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
 6월 14, 2023 14:50:53.74 [19820:6604:0614/145053.741:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
 6월 14, 2023 14:58:48.89 [19820:6604:0614/145848.892:ERROR:page_load_metrics_update_dispatcher.cc(178)] Invalid first_paint 0.537 s for first_image_paint 0.524 s
+
+6월 19, 2023 15:19:46.19 NEW SESSION
+6월 19, 2023 15:19:46.19 [12448:1276:0619/151946.178:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost
+6월 19, 2023 16:16:18.25 [12448:1276:0619/161618.253:ERROR:interface_endpoint_client.cc(697)] Message 0 rejected by interface blink.mojom.WidgetHost

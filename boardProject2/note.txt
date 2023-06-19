@@ -1,0 +1,56 @@
+# BoardProject2 액기스만
+
+	Controller --> Service --> Repository(DAO)
+						<--			<--
+						
+						
+	DAO : DATABASE ACCESS OBJECT 데이터베이스 연결객체
+
+## controller
+
+	// 여기서 나오는 RequestMapping은 접두사이다
+	@Controller
+	@RequestMapping("/board")
+	public class BoardController {
+	
+		@GetMapping("/main")
+		public String boardMain() {
+			return "board/main";
+		}
+	}
+
+## 즉 , 이것은 아래와 같다
+
+	@Controller
+	public class BoardController {
+	
+		@GetMapping("/board/main")
+		public String boardMain() {
+			return "board/main";
+		}
+	}
+	
+---
+
+## jsp에서
+
+	<c:url var="root" value="/" />
+	<c:set var="path1" value="${pageContext.request.contextPath }" />
+	상위 두개는 같은 역할을 하고있다
+	
+	localhost(127.0.0.1):portnumber/projectname  이것을 ContextPath라고 한다
+	Context는 프로젝트를 다른관점에서 본것
+	
+	<c:url 은 localhost(127.0.0.1):portnumber/projectname의미를 내포하고있는것이다
+	그래서 아래 /를 빼고 ${root } 를 한것은 결국 url에 "/"를 적어준것때문
+	
+#### 예 )
+
+		<li class="nav-item">
+			<a href="${root }board/main" class="nav-link">자유게시판</a>
+		</li>
+		<li class="nav-item">
+			<a href="${path1 }/board/main" class="nav-link">유머게시판</a>
+		</li>
+
+---
