@@ -48,3 +48,11 @@
     ExceptionHandling
     boardProject
     boardProject2
+
+## [0620](https://github.com/nxx5xxx/spring/blob/master/0620.md)
+### 수업내용
+    boardProject2
+    boardProject3
+    boardProject2XML
+    boardProject3XML
+

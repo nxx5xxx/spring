@@ -123,10 +123,21 @@
 		    <artifactId>jackson-databind</artifactId>
 		    <version>2.10.2</version>
 		</dependency>
-		
+		<!-- oracle driver -->
+		<!-- <dependency>
+		    <groupId>oracle</groupId>
+		    <artifactId>ojdbc6</artifactId>
+		    <version>11.2.0.3</version>
+		</dependency> -->
   </dependencies>
   <!--// library setting -->
-  
+  	<!-- <repositories>
+		  <repository>
+		    <id>oracle</id>
+		    <name>ORACLE JDBC Repository</name>
+		    <url>http://www.datanucleus.org/downloads/maven2/</url>
+		  </repository>
+	</repositories> -->
   
   
 </project>

@@ -2,6 +2,7 @@
 <section name="Workbench">
 	<section name="wizardPage">
 		<list key="groupId">
+			<item value="boardProject2Xml"/>
 			<item value="boardProject"/>
 			<item value="ExceptionHandling"/>
 			<item value="InterceptorXml"/>
@@ -16,11 +17,11 @@
 			<item value="message"/>
 			<item value="properties"/>
 			<item value="Cookie"/>
-			<item value="ApplicationScopeXml"/>
 		</list>
 		<list key="name">
 		</list>
 		<list key="artifactId">
+			<item value="boardProject2Xml"/>
 			<item value="boardProject"/>
 			<item value="ExceptionHandling"/>
 			<item value="InterceptorXml"/>
@@ -35,7 +36,6 @@
 			<item value="message"/>
 			<item value="properties"/>
 			<item value="Cookie"/>
-			<item value="ApplicationScopeXml"/>
 		</list>
 		<list key="version">
 			<item value="0.0.1-SNAPSHOT"/>

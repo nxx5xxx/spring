@@ -1,0 +1,182 @@
+-----
+
+# List는 ArrayList의 상위개념
+	List<~> abc = new ArrayList<>();
+	ArrayList<~> abc = new ArrayList<>(); 는 가능하다
+	비유하면
+	음식<~> abc = new 짜장면<>();
+	짜장면<~> abc = new 짜장면<>(); 이런느낌
+
+-----
+# 맵퍼 설정 - 자바
+	인터페이스로 만듬
+	TopMenuMapper만듬
+	
+## TopMenuMapper.java -- (category)
+	public interface TopMenuMapper {
+		
+		@Select("select * from board_info_table order by board_info_idx asc")
+		List<BoardInfoBean> getTopMenuList();
+	}
+
+## CRUD
+
+	@Select 어노테이션을 이용해 select * from ~~~ 를 입력해줄 수 있다
+	
+	사용법
+	
+	@Select("select * from board_info_table order by board_info_idx asc")
+	List<BoardInfoBean> getTopMenuList();
+	
+	이런식으로 써서 List로 받아 올 수 있다
+	
+	
+## ServletAppContext.java
+	
+	//TopMenuMapper
+	@Bean
+	public MapperFactoryBean<TopMenuMapper> getTopMenuMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<TopMenuMapper> factoryBean = new MapperFactoryBean<TopMenuMapper>(TopMenuMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+		
+	}
+	
+	를 추가함
+
+
+## TopMenuDAO.java
+	
+#### 설명
+	
+	TopMenuMapper를 실행하는 Repository
+	@Repository를 추가해줘야함
+	
+	private TopMenuMapper topMenuMapper = new TopMenuMapper();
+	원래 임플리먼츠는 객체생성이 불가능하지만 Autowired는 가능케해준다
+	
+	그래서 
+	@Autowired
+	private TopMenuMapper topMenuMapper;// = new TopMenuMapper();
+	
+### 본문
+
+	@Repository
+	public class TopMenuDAO {
+		
+		@Autowired
+		private TopMenuMapper topMenuMapper;// = new TopMenuMapper();
+	
+		
+		//카테고리 리스트
+		public List<BoardInfoBean> getTopMenuMapper(){
+			List<BoardInfoBean> topMenuList= topMenuMapper.getTopMenuList();
+			return topMenuList;
+		}
+	}
+	
+## TopMenuService
+
+	@Service 어노테이션 달아야함
+	
+	@Service
+	public class TopMenuService {
+		
+		@Autowired
+		private TopMenuDAO topMenuDAO;
+		
+		public List<BoardInfoBean> getTopMenuList(){
+			List<BoardInfoBean> topMenuList= topMenuDAO.getTopMenuList();
+			return topMenuList;
+		}
+	}
+	
+## TopMenuInterceptor.java
+
+	public class TopMenuInterceptor implements HandlerInterceptor{
+	
+	
+	
+	@Autowired
+	private TopMenuService topMenuService;
+
+	@Override
+	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
+			throws Exception {
+		
+		List<BoardInfoBean> topMenuList = topMenuService.getTopMenuList();
+		request.setAttribute("topMenuList", topMenuList);
+		
+		//return HandlerInterceptor.super.preHandle(request, response, handler);
+		return true;
+	}
+	
+## ServletAppContext.java 추가
+
+	//Interceptor 등록하기
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		WebMvcConfigurer.super.addInterceptors(registry);
+		
+		TopMenuInterceptor topMenuInterceptor = new TopMenuInterceptor(topMenuService);
+		
+		InterceptorRegistration reg1 = registry.addInterceptor(topMenuInterceptor);
+		reg1.addPathPatterns("/**");
+	}
+	
+-----------------------------------------
+------------------------------------------
+# 맵퍼 설정 - XML
+
+## top_menu_mapper.xml
+
+	<?xml version="1.0" encoding="UTF-8"?>
+	<!DOCTYPE mapper
+	  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="topmenu">
+		<select id="getTopMenuList" resultType="kr.co.tjoeun.bean.BoardInfoBean">
+			<![CDATA[
+				select * from board_info_table order by board_info_idx asc
+			]]>
+		</select>
+	</mapper>	
+
+## TopMenuDAO.java
+
+	@Repository
+	public class TopMenuDAO {
+		
+		@Autowired
+		private SqlSessionTemplate sqlSessionTemplate;// = new TopMenuMapper();
+	
+		
+		topmenu.get_topmenu_list 에 해당하는 맵퍼를 작동한다는것	
+		//카테고리 리스트
+		public List<BoardInfoBean> getTopMenuList(){
+			List<BoardInfoBean> topMenuList= sqlSessionTemplate.selectList("topmenu.get_topmenu_list");
+			return topMenuList;
+		}
+	}
+
+## TopMenuService.java - 자바방식파일과 같음
+
+## TopMenuInterceptor.java
+
+## servlet-context.xml
+
+		<!--scan할 bean 들이 모여있는 package를 지정하기 -->
+   		<context:component-scan base-package="kr.co.tjoeun.controller"/>
+   		<context:component-scan base-package="kr.co.tjoeun.service" />
+   		<context:component-scan base-package="kr.co.tjoeun.dao" />
+   		
+   		 
+   		 <!-- interceptor 등록하기 -->
+   		 <!-- TopMenuInterceptor Class 등록하기 -->
+		<interceptors>
+			<interceptor>
+				<mapping path="/**"/>
+				<beans:bean class="kr.co.tjoeun.interceptor.TopMenuInterceptor"/>
+			</interceptor>
+		</interceptors>   	
+	

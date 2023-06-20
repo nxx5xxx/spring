@@ -1,11 +1,21 @@
 package kr.co.tjoeun.config;
 
+import org.apache.commons.dbcp2.BasicDataSource;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.mybatis.spring.SqlSessionFactoryBean;
+import org.mybatis.spring.mapper.MapperFactoryBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+
+import kr.co.tjoeun.mapper.BoardMapper;
+
 
 // Spring MVC project 에 관련된 설정을 하는 클래스
 //servlet_context.xml 의 설정을 java로 한다면
@@ -18,8 +28,48 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 @ComponentScan("kr.co.tjoeun.controller")
 @ComponentScan("kr.co.tjoeun.service")
 @ComponentScan("kr.co.tjoeun.dao")
+@PropertySource("/WEB-INF/properties/db.properties")
 public class ServletAppContext implements WebMvcConfigurer {
+	
+	@Value("${db.classname}")
+	private String dbClassname;
+	
+	@Value("${db.url}")
+	private String dbUrl;
+	
+	@Value("${db.username}")
+	private String dbUsername;
+	
+	@Value("${db.password}")
+	private String dbPassword;
 
+	//BasicDataSource : 데이터 베이스 접속정보를 관리하는 Bean (을 return함)
+	@Bean
+	public BasicDataSource dataSource() {
+		BasicDataSource source = new BasicDataSource();
+		source.setDriverClassName(dbClassname);
+		source.setUrl(dbUrl);
+		source.setUsername(dbUsername);
+		source.setPassword(dbPassword);
+		return source;
+	};
+	// Query 문과 Database 접속 정보를 관리하는 Bean을 (을 return함)
+	@Bean
+	public SqlSessionFactory factory(BasicDataSource source) throws Exception{
+		SqlSessionFactoryBean factoryBean = new SqlSessionFactoryBean();
+		factoryBean.setDataSource(source);
+		SqlSessionFactory factory = factoryBean.getObject();
+		return factory;
+	}
+	
+	// Query문 실행을 위한 Bean(Mapper 관리) (을return 함)
+	public MapperFactoryBean<BoardMapper> getBoardMapper(SqlSessionFactory factory) throws Exception{
+		MapperFactoryBean<BoardMapper> factoryBean = new MapperFactoryBean<BoardMapper>(BoardMapper.class);
+		factoryBean.setSqlSessionFactory(factory);
+		return factoryBean;
+
+	}
+	
 		//컨트롤러 메소드에서 반환하는 문자열의 prefix와 suffix경로 정보 설정하기 - 접두사 접미사
 	@Override
 	public void configureViewResolvers(ViewResolverRegistry registry) {
