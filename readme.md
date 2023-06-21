@@ -56,3 +56,7 @@
     boardProject2XML
     boardProject3XML
 
+## [0621](https://github.com/nxx5xxx/spring/blob/master/0621.md)
+### 수업내용
+	boardProject4
+	boardProject4Xml
