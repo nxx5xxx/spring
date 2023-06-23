@@ -60,3 +60,18 @@
 ### 수업내용
 	boardProject4
 	boardProject4Xml
+
+## [0623](https://github.com/nxx5xxx/spring/blob/master/0623.md)
+### 수업내용
+	boardProject5
+	boardProject5XML
+	상단메뉴구성
+	회원가입 : 유효성검사처리
+	회원가입 : 아이디 중복 확인 처리
+	회원가입 : 저장처리
+	로그인처리
+	boardProject6
+	boardProject6XML
+	상단메뉴 처리 및 로그아웃
+	로그인처리
+	회원 정보 수정 처리

@@ -1,0 +1,22 @@
+# 0623
+
+## user/login.jsp
+
+	form태그 안에 modelAttribute에 있는 tmpLoginJoinUserBean이 
+	루트앱 콘텍스트 loginUserBean에 들어가는것
+	
+	modelAttribute에 있는 tmpLoginJoinUserBean 는
+	error.properties에 있는 
+	Size . [tmpLoginJoinUserBean] . ~ 이부분에 들어간다
+	
+## UserMapper.java
+
+	tmpLoginJoinUserBean 으로 받아왔으므로
+	매개변수에 UserBean tmpLoginJoinUserBean 을 넣어줘야 이걸 select문에 연결시켜주고
+	그걸 다시 UserBean으로 반환한다 
+	
+## userDAO.java
+
+	루트앱 컨텍스에서 설정한 SessionScope 에있는 객체를
+	오토와이어를 통해 주입받아 사용
+	단, byName이니까 리소스를 사용해서 주입받음
