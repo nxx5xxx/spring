@@ -1,0 +1,16 @@
+# 0626
+	boardProject7
+	boardProject7XML
+	회원 정보 수정 처리
+	boardProject8
+	게시글 작성 및 저장
+	파일업로드 -StandardServletMultipartResolver
+---
+
+## 회원정보수정
+
+	수정확인
+	update구문 맵퍼에 입력 > 다오에서 맵퍼불러옴 > 서비스에서 다오불러옴 > 컨트롤러에서 리퀘스트영역에받은것 서비스로 넘김
+
+
+---

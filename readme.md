@@ -75,3 +75,14 @@
 	상단메뉴 처리 및 로그아웃
 	로그인처리
 	회원 정보 수정 처리
+
+## [0626](https://github.com/nxx5xxx/spring/blob/master/0626.md)
+### 수업내용
+	boardProject7
+	boardProject7XML
+	회원 정보 수정 처리
+	boardProject8
+	게시글 작성 및 저장
+	파일업로드 -StandardServletMultipartResolver
+
+    
