@@ -85,4 +85,14 @@
 	게시글 작성 및 저장
 	파일업로드 -StandardServletMultipartResolver
 
-    
+
+## [0627](https://github.com/nxx5xxx/spring/blob/master/0627.md)
+### 수업내용
+	boardproject9
+	작성한글 목록 보여주기 기능
+
+    boardProject10
+ 	글 수정 기능(작성 권한 처리) 구현
+ 	글수정 처리 기능 구현
+ 	수정할 때 , 이미지 첨부하지않는 경우,
+ 	기존 이미지 유지함
