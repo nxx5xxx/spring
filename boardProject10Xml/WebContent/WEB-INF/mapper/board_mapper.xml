@@ -48,4 +48,18 @@
     	user_table where content_writer_idx = user_idx and content_idx = #{content_idx}
     	]]>
     </select>
+    <!-- 게시글 수정하기 -->
+    <update id="modifyContentInfo" parameterType="kr.co.tjoeun.bean.ContentBean">
+ 	    <![CDATA[
+ 	    update content_table set content_subject = #{content_subject} ,content_text = #{content_text}, 
+ 	    content_file = #{content_file, jdbcType=VARCHAR} where content_idx=#{content_idx}
+       	]]>
+    </update>
+    
+    <!-- 게시글 삭제하기 -->
+    <delete id="deleteContentInfo" parameterType="java.lang.Integer">
+    	<![CDATA[
+    		delete from content_table where content_idx = #{content_idx}
+    	]]>
+    </delete>
 </mapper>

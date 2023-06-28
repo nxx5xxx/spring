@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<!-- 
+	   content_table 에 insert 하기
+	   #{content_file, jdbcType=VARCHAR} 
+	    ㄴ 이미지를 추가 하지 않으면 content_file 에 들어오는 값이 null 이 되는데
+	       이 때, null 값이 들어와도 오류가 발생하지 않게 하려면 jdbcType=VARCHAR 를 설정함
+	 -->
+	 
+	<!-- 현재 sequence값 갖고오기
+		여기서 content_seq.nextval 는 db에 넣을뿐이지 content_idx 들어가는게 아니라 서 이것을하면
+		 writeContentBean이 있는곳에 content_idx 가 들어간다
+		그래서 values에 #{content_idx}를하면  writeContentBean에 넣은 SELECT content_seq.nextval FROM DUAL 을 사용할수 있다 -->
+    <insert id="addContentInfo" parameterType="kr.co.tjoeun.bean.ContentBean">
+    		<selectKey keyProperty="content_idx" order = "BEFORE" resultType="java.lang.Integer">
+    			<![CDATA[
+    			SELECT content_seq.nextval FROM DUAL
+    			]]>
+			</selectKey>
+	    <![CDATA[
+	        INSERT INTO content_table(content_idx, content_subject, content_text, content_file, content_writer_idx, content_board_idx, content_date) 
+  	        VALUES(#{content_idx}, #{content_subject}, #{content_text}, #{content_file, jdbcType=VARCHAR}, #{content_writer_idx}, #{content_board_idx}, sysdate)
+	    ]]>
+    </insert>
+    <!-- 게시판 index 로 게시판 이름 갖고오기(조회하기) - 카테고리  -->
+    <select id="getBoardInfoName" parameterType="java.lang.Integer" resultType="java.lang.String">
+    	<![CDATA[
+    		select board_info_name from board_info_table where board_info_idx=#{board_info_idx}
+    	]]>
+    </select>
+    <!-- 해당 카테고리 게시글 목록 갖고오기 -->
+    <select id="getContentList" parameterType="java.lang.Integer" resultType="kr.co.tjoeun.bean.ContentBean">
+    	<![CDATA[
+    		select content_idx,content_subject,user_name as content_writer_name,
+    		TO_CHAR(content_date,'YYYY-MM-DD') as content_date from content_table,
+    		user_table where content_writer_idx = user_idx and content_board_idx = #{content_board_idx} 
+    		order by content_idx desc
+    	]]>
+    </select>
+    <!-- 상세페이지에 출력할 데이터 갖고오기 -->
+    <select id="getContentInfo" parameterType="java.lang.Integer" resultType="kr.co.tjoeun.bean.ContentBean">
+    	<![CDATA[
+    	select user_name as content_writer_name,TO_CHAR(content_date,'YYYY-MM-DD') as content_date,
+    	content_subject,content_text,content_file,content_writer_idx  from content_table,
+    	user_table where content_writer_idx = user_idx and content_idx = #{content_idx}
+    	]]>
+    </select>
+    <!-- 게시글 수정하기 -->
+    <update id="modifyContentInfo" parameterType="kr.co.tjoeun.bean.ContentBean">
+ 	    <![CDATA[
+ 	    update content_table set content_subject = #{content_subject} ,content_text = #{content_text}, 
+ 	    content_file = #{content_file, jdbcType=VARCHAR} where content_idx=#{content_idx}
+       	]]>
+    </update>
+    
+    <!-- 게시글 삭제하기 -->
+    <delete id="deleteContentInfo" parameterType="java.lang.Integer">
+    	<![CDATA[
+    		delete from content_table where content_idx = #{content_idx}
+    	]]>
+    </delete>
+    	<!-- 게시글 전체 개수 갖고오기 -->
+    <select id="getContentCnt" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    	<![CDATA[
+    		select count(*) from content_table where content_board_idx=#{content_board_idx}
+    	]]>
+    </select>	
+</mapper>

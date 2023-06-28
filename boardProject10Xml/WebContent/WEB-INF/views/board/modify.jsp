@@ -55,6 +55,7 @@
 								<c:if test="${modifyContentBean.content_file==null }"><br>첨부된 이미지가 없습니다</c:if>
 								<c:if test="${modifyContentBean.content_file!=null }">
 									<img src="${root }upload/${modifyContentBean.content_file }" width="100%"/>	
+									<form:hidden path="content_file" />
 								</c:if>
 							<form:input type="file" path="upload_file" class="form-control" accept="image/*"/>					
 						</div>

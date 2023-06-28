@@ -2,9 +2,11 @@ package kr.co.tjoeun.mapper;
 
 import java.util.ArrayList;
 
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.SelectKey;
+import org.apache.ibatis.annotations.Update;
 
 import kr.co.tjoeun.bean.ContentBean;
 
@@ -38,6 +40,16 @@ public interface BoardMapper {
 			+ "content_subject,content_text,content_file,content_writer_idx from content_table,"
 			+ "user_table where content_writer_idx = user_idx and content_idx = #{content_idx}")
 	ContentBean getContentInfo(int content_idx);
+	
+	//상세페이지(게시판 글 수정)
+	//여기서 jdbcType=VARCHAR를 넣는것은 null값일경우 오류를 최소화 하기위해 넣은것이다
+	@Update("update content_table set content_subject = #{content_subject} ,"
+			+ "content_text = #{content_text}, content_file = #{content_file, jdbcType=VARCHAR} where content_idx=#{content_idx}")
+	void modifyContentInfo(ContentBean modifyContentBean);
+	
+	//게시글 삭제하기
+	@Delete("delete from content_table where content_idx = #{content_idx}")
+	void deleteContentInfo(int content_idx);
 	
 }
 

@@ -1,0 +1,98 @@
+
+--------
+# 0628
+	boardproject10
+	게시글수정
+	게시글삭제
+	boardproject11
+	페이징처리
+	게시판 paging 기능 구현하기
+	한 페이지당 보이는 게시글의 개수 제한
+	boardProject12
+	기타설정 및 마무리
+	게시판 관련 페이지 번호 설정
+	메인 페이지 구성 확인
+	
+## 페이징처리
+
+###	option.properties 수정
+	page.listcnt = 10 -> 한페이지에 보여줄 게시글 수
+	page.pagenationcnt = 10 -> 이전 다음 사이에 들어올 페이지 수
+	
+###	보드컨트롤러에 board/main의 매개변수에
+	@RequestParam(value="page", defaultValue="1") int page 추가
+	
+	ArrayList<ContentBean> contentList = boardService.getContentList(board_info_idx ,page);
+	서비스받아오는객체에 page추가
+	
+		
+###	보드서비스에서
+	//해당 게시판 목록  조회
+	public ArrayList<ContentBean> getContentList(int board_info_idx,int page){
+	이부분에 page추가하고
+	로직 작성할것임
+	
+	프로퍼티스를 쓰기위해
+	@PropertySource("/WEB-INF/properties/option.properties")
+	와
+		//페이지리스트값
+	@Value("${page.listcnt}")
+	private int pageListcnt;
+	를 등록해야한다
+	
+	
+	public ArrayList<ContentBean> getContentList(int board_info_idx,int page){
+		
+		//페이징처리
+		/*
+		 * page		pagination number(이전과 다음사이의 숫자)
+		 * 1	>	0 (start) <- (page -1) * pageListcnt
+		 * 2	>	10
+		 * 3	>	20
+		*/
+		int start = (page -1) * pageListcnt ;
+		RowBounds rowBounds = new RowBounds(start , pageListcnt);
+		
+		return boardDAO.getContentList(board_info_idx,rowBounds);
+	}
+	
+### DAO에서
+
+	//해당 게시판 목록  조회
+	public ArrayList<ContentBean> getContentList(int board_info_idx, RowBounds rowBounds){
+		return boardMapper.getContentList(board_info_idx,rowBounds);
+	}
+	
+### Mapper에서
+		//해당 카테고리 게시글 목록 갖고오기
+	@Select("select content_idx,content_subject,user_name as content_writer_name,"
+			+ "TO_CHAR(content_date,'YYYY-MM-DD') as content_date from content_table,"
+			+ "user_table where content_writer_idx = user_idx and content_board_idx = #{content_board_idx} "
+			+ "order by content_idx desc")
+	ArrayList<ContentBean> getContentList(int board_info_idx,RowBounds rowBounds);
+	
+	이러면끝.
+	간단
+	
+#### XMl방식도 위에 방식따라가며 참고
+
+## 페이징 버튼처리
+
+#### PageBean을만든다
+
+
+#### jsp
+		<c:forEach var="idx" begin="${pageBean.min }" end="${pageBean.max }" >
+			<li class="page-item">
+				<a href="${root }board/main?board_info_idx=${board_info_idx }&page=${idx}" class="page-link">${idx}</a>
+			</li>
+		</c:forEach>
+		
+---
+
+# boardProject12
+	기타설정 및 마무리
+	게시판 관련 페이지 번호 설정
+	메인 페이지 구성 확인
+	
+	

@@ -96,3 +96,17 @@
  	글수정 처리 기능 구현
  	수정할 때 , 이미지 첨부하지않는 경우,
  	기존 이미지 유지함
+
+## [0628](https://github.com/nxx5xxx/spring/blob/master/0628.md)
+### 수업내용
+	boardproject10
+	게시글수정
+	게시글삭제
+	boardproject11
+	페이징처리
+	게시판 paging 기능 구현하기
+	한 페이지당 보이는 게시글의 개수 제한
+	boardProject12
+	기타설정 및 마무리
+	게시판 관련 페이지 번호 설정
+	메인 페이지 구성 확인
