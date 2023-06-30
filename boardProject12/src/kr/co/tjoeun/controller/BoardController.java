@@ -55,7 +55,7 @@ public class BoardController {
 	@GetMapping("/read")
 	public String boardRead(@RequestParam("content_idx") int content_idx,
 			@RequestParam("board_info_idx") int board_info_idx,Model model,
-			@RequestParam("page") int page) {
+			@RequestParam(value="page" , defaultValue="1") int page) {
 		
 		model.addAttribute("board_info_idx", board_info_idx);
 		model.addAttribute("content_idx", content_idx);

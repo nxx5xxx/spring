@@ -1,4 +1,4 @@
-# 스프링 레거시를 배우는 기초단계
+# 스프링 레거시
 
 ## [0607](https://github.com/nxx5xxx/spring/blob/master/0607.md)
 
@@ -110,3 +110,11 @@
 	기타설정 및 마무리
 	게시판 관련 페이지 번호 설정
 	메인 페이지 구성 확인
+
+## 0630
+### 수업내용
+    boardProject12
+    글쓰기 수정
+
+    자바스크립트로 넘어감
+    [0630](https://github.com/nxx5xxx/javaScript/blob/master/readme.md)
